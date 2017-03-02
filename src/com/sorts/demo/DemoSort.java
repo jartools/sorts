@@ -5,7 +5,11 @@ import java.util.List;
 import java.util.Random;
 
 import com.sorts.Bubble;
+import com.sorts.Insert;
+import com.sorts.Merge;
 import com.sorts.Quick;
+import com.sorts.Selection;
+import com.sorts.Shell;
 
 public class DemoSort {
 
@@ -31,7 +35,7 @@ public class DemoSort {
 	}
 
 	public static void main(String[] args) throws Exception {
-		test();
+		testSorts();
 	}
 
 	static void test() throws Exception {
@@ -86,6 +90,34 @@ public class DemoSort {
 			Bubble.bubbleSort(arrs);
 			diff = System.currentTimeMillis() - beg;
 			System.out.println("冒泡排序耗费时间:" + diff + " ms");
+			Display(arrs);
+			
+			beg = System.currentTimeMillis();
+			arrs = list.toArray(arrs);
+			Insert.insertSort(arrs);
+			diff = System.currentTimeMillis() - beg;
+			System.out.println("插入排序耗费时间:" + diff + " ms");
+			Display(arrs);
+			
+			beg = System.currentTimeMillis();
+			arrs = list.toArray(arrs);
+			Merge.mergeSort(arrs);
+			diff = System.currentTimeMillis() - beg;
+			System.out.println("归并排序耗费时间:" + diff + " ms");
+			Display(arrs);
+			
+			beg = System.currentTimeMillis();
+			arrs = list.toArray(arrs);
+			Selection.selectSort(arrs);
+			diff = System.currentTimeMillis() - beg;
+			System.out.println("选择排序耗费时间:" + diff + " ms");
+			Display(arrs);
+			
+			beg = System.currentTimeMillis();
+			arrs = list.toArray(arrs);
+			Shell.shellSort(arrs);
+			diff = System.currentTimeMillis() - beg;
+			System.out.println("希尔算法耗费时间:" + diff + " ms");
 			Display(arrs);
 		}
 	}

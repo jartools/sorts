@@ -18,7 +18,7 @@ public class Selection {
 	 * 循环一次i只排序了一次，冒泡排序循环一次，会至少排序N次(非负数整数)
 	 * @param numbers
 	 */
-	public static void selectSort(int[] numbers) {
+	public static void selectSort(Integer[] numbers) {
 		int size = numbers.length, temp;
 		int k = 0;
 		for (int i = 0; i < size; i++) {

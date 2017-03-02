@@ -22,7 +22,7 @@ public class Insert {
 	 * 
 	 * @param numbers
 	 */
-	public static void insertSort(int[] numbers) {
+	public static void insertSort(Integer[] numbers) {
 		int size = numbers.length, temp, j;
 		for (int i = 1; i < size; i++) {
 			temp = numbers[i];

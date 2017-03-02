@@ -18,7 +18,7 @@ public class Shell {
 	 * 第一次后increment的值变为3/2=1,此时对数组进行插入排序， 实现数组从大到小排
 	 */
 
-	public static void shellSort(int[] data) {
+	public static void shellSort(Integer[] data) {
 		int j = 0;
 		int temp = 0;
 		// 每次将步长缩短为原来的一半
