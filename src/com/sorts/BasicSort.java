@@ -12,4 +12,10 @@ public class BasicSort {
 		System.out.println();
 		System.out.println("=== end ===");
 	}
+	
+	static protected void swap(int[] arrs,int i,int j) {
+		int temp = arrs[i];
+		arrs[i] = arrs[j];
+		arrs[j] = temp;
+	}
 }

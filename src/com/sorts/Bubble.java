@@ -33,50 +33,47 @@ public class Bubble extends BasicSort {
 	    return numbers;
 	}
 	
-	public static int[] bubbleSort(int[] numbers) {   
-	    int temp; // 记录临时中间值   
-	    int size = numbers.length; // 数组大小   
+	public static int bubbleSort(int[] numbers) {   
+	    int size = numbers.length; // 数组大小
+	    int count = 0;
 	    for (int i = 0; i < size - 1; i++) {   
 	        for (int j = i + 1; j < size; j++) {   
 	            if (numbers[i] > numbers[j]) { // 交换两数的位置   
-	                temp = numbers[i];   
-	                numbers[i] = numbers[j];   
-	                numbers[j] = temp;   
-	            }   
+	                swap(numbers, i, j);
+	            }
+	            ++count;
 	        }   
 	    }   
-	    return numbers;
+	    return count;
 	}
 	
 	// desc - 降序， asc - 升序
-	static public int[] bSortAse(int... nums) {
-		int tmp;
+	static public int bSortAse(int... nums) {
 		int len1 = nums.length - 1;
+		int count = 0;
 		for (int i = 0; i < len1; i++) {
 			for (int j = 0; j < len1 - i; j++) {
 				if(nums[j] > nums[j+1]) {
-					tmp = nums[j];
-					nums[j] = nums[j+1];
-					nums[j+1] = tmp;
+					swap(nums, j, j+1);
 				}
+				++count;
 			}
 		}
-		return nums;
+		return count;
 	}
 	
-	static public int[] bSortDesc(int... nums) {
-		int tmp;
+	static public int bSortDesc(int... nums) {
 		int len1 = nums.length - 1;
+		int count = 0;
 		for (int i = 0; i < len1; i++) {
 			for (int j = 0; j < len1 - i; j++) {
 				if(nums[j] < nums[j+1]) {
-					tmp = nums[j];
-					nums[j] = nums[j+1];
-					nums[j+1] = tmp;
+					swap(nums, j, j+1);
 				}
+				++count;
 			}
 		}
-		return nums;
+		return count;
 	}
 	
 	public static void main(String[] args) {

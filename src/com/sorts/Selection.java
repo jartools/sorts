@@ -32,23 +32,25 @@ public class Selection extends BasicSort {
 		}
 	}
 	
-	public static void selectSort(int... numbers) {
-		int size = numbers.length, temp;
+	public static int selectSort(int... numbers) {
+		int size = numbers.length;
+		int count = 0;
 		for (int i = 0; i < size; i++) {
 			int min = i;
 			for (int j = size - 1; j > i; j--) {
 				if (numbers[j] < numbers[min])
 					min = j;
+				++count;
 			}
-			temp = numbers[i];
-			numbers[i] = numbers[min];
-			numbers[min] = temp;
+			swap(numbers, i, min);
 		}
+		return count;
 	}
 	
 	public static void main(String[] args) {
 		int[] arrs = {3,6,4,2,11,10,5};
-		selectSort(arrs);
+		int count = selectSort(arrs);
 		print(arrs);
+		System.out.println(count);
 	}
 }
