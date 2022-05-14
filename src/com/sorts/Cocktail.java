@@ -1,5 +1,7 @@
 package com.sorts;
 
+import java.util.Arrays;
+
 /**
  * 
  * @title 鸡尾酒排序(双向冒泡排序)
@@ -31,7 +33,7 @@ public class Cocktail extends Bubble {
 				}
 				++count;
 			}
-			
+
 			for (int j = lens - 1 - i; j > i; j--) {
 				if (numbers[j] < numbers[j - 1]) { // 交换两数的位置
 					swap(numbers, j, j - 1);
@@ -41,7 +43,7 @@ public class Cocktail extends Bubble {
 		}
 		return count;
 	}
-	
+
 	public static int cocktailSort2(int[] numbers) {
 		int lens = numbers.length; // 数组大小
 		int count = 0;
@@ -54,7 +56,7 @@ public class Cocktail extends Bubble {
 				}
 				++count;
 			}
-			if(isSorted)
+			if (isSorted)
 				break;
 			isSorted = true;
 			for (int j = lens - 1 - i; j > i; j--) {
@@ -64,17 +66,17 @@ public class Cocktail extends Bubble {
 				}
 				++count;
 			}
-			if(isSorted)
+			if (isSorted)
 				break;
 		}
 		return count;
 	}
-	
+
 	public static int cocktailSort3(int[] numbers) {
 		int begin = 0;
-		int end = numbers.length;
+		int end = numbers.length - 1;
 		int count = 0;
-		while(begin < end) {
+		while (begin < end) {
 			for (int j = begin; j < end; j++) {
 				if (numbers[j] > numbers[j + 1]) { // 交换两数的位置
 					swap(numbers, j, j + 1);
@@ -93,42 +95,43 @@ public class Cocktail extends Bubble {
 		return count;
 	}
 
-	public static void main(String[] args) {
-		int[] arrs = {3,6,4,2,11,10,5};
+	static void testEntry(int... numbers) {
+		int lens = numbers.length;
+		int[] arrs = Arrays.copyOf(numbers, lens);
+		// System.out.println(arrs == numbers);
 		int count = bubbleSort(arrs);
-		print(arrs);
-		System.out.println(count);
-		
-		arrs = new int[]{3,6,4,2,11,10,5};
+		print("bubbleSort = " + count,arrs);
+
+		arrs = Arrays.copyOf(numbers, lens);
 		count = bSortAse(arrs);
-		print(arrs);
-		System.out.println(count);
-		
-		arrs = new int[]{3,6,4,2,11,10,5};
+		print("bSortAse = " + count,arrs);
+
+		arrs = Arrays.copyOf(numbers, lens);
 		count = bSortDesc(arrs);
-		print(arrs);
-		System.out.println(count);
-		
-		arrs = new int[]{3,6,4,2,11,10,5};
+		print("bSortDesc = " + count,arrs);
+
+		arrs = Arrays.copyOf(numbers, lens);
 		count = cocktailSort(arrs);
-		print(arrs);
-		System.out.println("cocktail = " + count);
-		
-		// {2,3,4,5,6,7,8,1};
-		arrs = new int[]{3,6,4,2,11,10,5};
+		print("cocktail = " + count,arrs);
+
+		arrs = Arrays.copyOf(numbers, lens);
 		count = cocktailSort2(arrs);
-		print(arrs);
-		System.out.println("cocktail2 = " + count);
-		
-		arrs = new int[]{3,6,4,2,11,10,5};
+		print("cocktail2 = " + count,arrs);
+
+		arrs = Arrays.copyOf(numbers, lens);
 		count = cocktailSort3(arrs);
-		print(arrs);
-		System.out.println("cocktail3 = " + count);
+		print("cocktail3 = " + count,arrs);
+		System.out.println();
+	}
+
+	public static void main(String[] args) {
+		System.out.println("=========main beg");
+		testEntry(3, 6, 4, 2, 11, 10, 5);
 		
-		arrs = new int[]{88,7,79,64,55,98,48,52,4,13};
-		count = cocktailSort3(arrs);
-		print(arrs);
-		System.out.println(count);
+		testEntry(2,3,4,5,6,7,8,1);
+		
+		testEntry(88, 7, 79, 64, 55, 98, 48, 52, 4, 13);
+		System.out.println("=========main end");
 	}
 
 }
