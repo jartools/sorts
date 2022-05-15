@@ -1,6 +1,9 @@
 package com.sorts;
 
+import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Collections;
+import java.util.List;
 
 /**
  * 
@@ -99,38 +102,76 @@ public class Cocktail extends Bubble {
 		int lens = numbers.length;
 		int[] arrs = Arrays.copyOf(numbers, lens);
 		// System.out.println(arrs == numbers);
+		// nanoTime 纳秒(ns) = 1／1,000,000,000秒(s) = 1／1,000,000毫秒(ms)
+		long beg = System.nanoTime();
 		int count = bubbleSort(arrs);
-		print("bubbleSort = " + count,arrs);
+		long cur = System.nanoTime();
+		double ms = (cur - beg)/1000000d;
+		print("bubbleSort = " + count + " [" + ms + "]ms",arrs);
 
 		arrs = Arrays.copyOf(numbers, lens);
+		beg = System.nanoTime();
 		count = bSortAse(arrs);
-		print("bSortAse = " + count,arrs);
+		cur = System.nanoTime();
+		ms = (cur - beg)/1000000d;
+		print("bSortAse = " + count + " [" + ms + "]ms",arrs);
 
 		arrs = Arrays.copyOf(numbers, lens);
+		beg = System.nanoTime();
 		count = bSortDesc(arrs);
-		print("bSortDesc = " + count,arrs);
+		cur = System.nanoTime();
+		ms = (cur - beg)/1000000d;
+		print("bSortDesc = " + count + " [" + ms + "]ms",arrs);
 
 		arrs = Arrays.copyOf(numbers, lens);
+		beg = System.nanoTime();
 		count = cocktailSort(arrs);
-		print("cocktail = " + count,arrs);
+		cur = System.nanoTime();
+		ms = (cur - beg)/1000000d;
+		print("cocktail = " + count + " [" + ms + "]ms",arrs);
 
 		arrs = Arrays.copyOf(numbers, lens);
+		beg = System.nanoTime();
 		count = cocktailSort2(arrs);
-		print("cocktail2 = " + count,arrs);
+		cur = System.nanoTime();
+		ms = (cur - beg)/1000000d;
+		print("cocktail2 = " + count + " [" + ms + "]ms",arrs);
 
 		arrs = Arrays.copyOf(numbers, lens);
+		beg = System.nanoTime();
 		count = cocktailSort3(arrs);
-		print("cocktail3 = " + count,arrs);
+		cur = System.nanoTime();
+		ms = (cur - beg)/1000000d;
+		print("cocktail3 = " + count + " [" + ms + "]ms",arrs);
 		System.out.println();
+	}
+	
+	static void nsize(int size) {
+		List<Integer> list = new ArrayList<>();
+		for (int i = 1; i <= size; i++) {
+			list.add(i);
+		}
+		Collections.shuffle(list);
+		int[] arrs = new int[list.size()];
+		for (int i = 0; i < list.size(); i++) {
+			arrs[i] = list.get(i);
+			System.out.print(arrs[i]);
+			System.out.print("_");
+		}
+		System.out.println();
+		testEntry(arrs);
 	}
 
 	public static void main(String[] args) {
 		System.out.println("=========main beg");
-		testEntry(3, 6, 4, 2, 11, 10, 5);
+//		testEntry(3, 6, 4, 2, 11, 10, 5);
+//		testEntry(2,3,4,5,6,7,8,1);
+//		testEntry(88, 7, 79, 64, 55, 98, 48, 52, 4, 13);
 		
-		testEntry(2,3,4,5,6,7,8,1);
+		nsize(20);
+		nsize(50);
+		nsize(100);
 		
-		testEntry(88, 7, 79, 64, 55, 98, 48, 52, 4, 13);
 		System.out.println("=========main end");
 	}
 
